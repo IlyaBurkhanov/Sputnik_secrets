@@ -1,0 +1,10 @@
+# IDE Fragments
+/.vscode
+*__pycache__*
+*.idea*
+*.DS_Store*
+tmp
+venv
+*.pytest_cache*
+.coverage
+

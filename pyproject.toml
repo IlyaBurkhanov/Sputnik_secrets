@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+pythonpath = [
+  "src", "."
+]
+asyncio_mode="auto"
+addopts = "--cov=src --cov-report term-missing"

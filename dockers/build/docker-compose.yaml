@@ -1,0 +1,33 @@
+version: '3.0'
+services:
+  db:
+    container_name: ${DB_CONTAINER_NAME:-db_1440}
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-secret1440}
+    ports:
+      - ${DB_PORT:-5432}:5432
+    networks:
+      - my-network
+
+  app:
+    container_name: secrets_1440
+    image: iburhanov/secrets1440:latest
+#    build:
+#      context: ../../
+#      dockerfile: dockers/build/Dockerfile
+    env_file:
+      - .local.env
+    depends_on:
+      - db
+    ports:
+      - ${HOST_PORT:-8080}:${HOST_PORT:-8080}
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: "bridge"
