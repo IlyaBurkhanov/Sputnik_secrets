@@ -1,5 +1,3 @@
-from __future__ import annotations, absolute_import
-
 import base64
 
 from cryptography.fernet import Fernet
